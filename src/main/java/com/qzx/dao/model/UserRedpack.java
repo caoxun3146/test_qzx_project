@@ -3,7 +3,7 @@ package com.qzx.dao.model;
 import javax.persistence.*;
 
 /**
- * 首页瀑布 设备领1元红包资格登记表11
+ * 首页瀑布 设备领1元红包资格登记表 ok
  */
 
 @Entity
