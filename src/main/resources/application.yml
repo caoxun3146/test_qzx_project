@@ -1,0 +1,29 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-uf6h9e68kb6607379ho.mysql.rds.aliyuncs.com:3306/quzhuanxiang?characterEncoding=utf8&useSSL=true&serverTimezone=GMT
+    username: starbaba
+    password: '!Q2w#E4r%t'
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  generate-ddl: false
+  thymeleaf:
+    prefix: classpath:/templates/
+  resources:
+    static-locations: classpath:templates/,classpath:static/
+server:
+  port: 8080
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    pool:
+      max-active: 100
+      max-idle: 10
+      max-wait: 100000
+    timeout: 0
