@@ -127,9 +127,14 @@ public class RedisTests {
         logger.info("---------------------------->> " + redisService.expire("redis_string_test", 120));
     }
 
+    /**
+     * redis 工具类测试
+     */
     @Test
-    public void util() {
-        logger.info("----------------------------" + redisUtil.get("redis_obj_test"));
+    public void redisUtil() {
+        //logger.info("----------------------------" + redisUtil.get("redis_obj_test"));
+
+        redisUtil.sSet("setkey", "service", "component", "repository");
     }
 
 }

@@ -1,9 +1,9 @@
-package com.qzx.dao.repostiory;
+package com.qzx.dao.repository;
 
 import com.qzx.dao.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AccountRepostiory extends JpaRepository<Account, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long> {
     Account findById(long id);
 
     Account findByTbId(String tbId);

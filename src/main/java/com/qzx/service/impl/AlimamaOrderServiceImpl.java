@@ -1,7 +1,7 @@
 package com.qzx.service.impl;
 
 import com.qzx.dao.model.AlimamaOrder;
-import com.qzx.dao.repostiory.AlimamaOrderRepostiory;
+import com.qzx.dao.repository.AlimamaOrderRepostiory;
 import com.qzx.service.service.AlimamaOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

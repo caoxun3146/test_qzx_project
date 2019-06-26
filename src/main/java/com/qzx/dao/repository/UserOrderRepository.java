@@ -1,11 +1,11 @@
-package com.qzx.dao.repostiory;
+package com.qzx.dao.repository;
 
 import com.qzx.dao.model.UserOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserOrderRepostiory extends JpaRepository<UserOrder, Long> {
+public interface UserOrderRepository extends JpaRepository<UserOrder, Long> {
     List<UserOrder> findByUserId(Long id);
 
     List<UserOrder> findByTbId(String id);

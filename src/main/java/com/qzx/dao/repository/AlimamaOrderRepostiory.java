@@ -1,4 +1,4 @@
-package com.qzx.dao.repostiory;
+package com.qzx.dao.repository;
 
 import com.qzx.dao.model.AlimamaOrder;
 import org.springframework.data.jpa.repository.JpaRepository;

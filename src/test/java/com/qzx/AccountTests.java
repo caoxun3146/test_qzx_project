@@ -1,8 +1,8 @@
 package com.qzx;
 
-import com.qzx.dao.repostiory.AccountRepostiory;
+import com.qzx.dao.repository.AccountRepository;
 import com.qzx.service.service.AccountService;
-import com.qzx.dao.repostiory.SettlementRepostiory;
+import com.qzx.dao.repository.SettlementRepostiory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class AccountTests {
     @Autowired
-    private AccountRepostiory authorRepostiory;
+    private AccountRepository authorRepostiory;
     @Autowired
     private SettlementRepostiory settlementRepostiory;
     private final static Logger logger = LoggerFactory.getLogger(AccountTests.class);

@@ -2,7 +2,7 @@ package com.qzx.controller;
 
 import com.qzx.dao.model.QuUserRedpack;
 import com.qzx.dao.model.Result;
-import com.qzx.dao.repostiory.QuUserRedpackRepostiory;
+import com.qzx.dao.repository.QuUserRedpackRepository;
 import com.qzx.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,19 +19,19 @@ import java.util.List;
 @RestController
 public class QuUserRedpackController {
     @Autowired
-    private QuUserRedpackRepostiory quUserRedpackRepostiory;
+    private QuUserRedpackRepository quUserRedpackRepository;
 
     private final static Logger logger = LoggerFactory.getLogger(QuUserRedpackController.class);
 
     @GetMapping(value = "/quredpack/{userId}")
     public Result DeleteQuRedpack(@PathVariable("userId") int userId) {
 
-        List<QuUserRedpack> quUserRedpack = quUserRedpackRepostiory.findByUserId(userId);
+        List<QuUserRedpack> quUserRedpack = quUserRedpackRepository.findByUserId(userId);
         logger.info("-----------" + quUserRedpack);
         if (quUserRedpack.isEmpty() || "".equals(quUserRedpack)) {  // quUserRedpack == null || "".equals(quUserRedpack)
             return ResultUtil.error(1, "无可删数据");
         } else {
-            quUserRedpackRepostiory.deleteByuserId(userId);
+            quUserRedpackRepository.deleteByuserId(userId);
             //JSON.toJSONString(ResultUtil.success(print),true);
             return ResultUtil.success(quUserRedpack);
         }
@@ -41,7 +41,7 @@ public class QuUserRedpackController {
     @GetMapping(value = "/findquredpack/{userId}")
     public Result FindQuRedpackByUserId(@PathVariable("userId") int userId) {
 
-        List<QuUserRedpack> quUserRedpack = quUserRedpackRepostiory.findByUserId(userId);
+        List<QuUserRedpack> quUserRedpack = quUserRedpackRepository.findByUserId(userId);
         logger.info("-----------" + quUserRedpack);
         if (quUserRedpack.isEmpty() || "".equals(quUserRedpack)) {  // quUserRedpack == null || "".equals(quUserRedpack)
             return ResultUtil.error(1, "该账号无营销红包数据");

@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.qzx.dao.model.Account;
 import com.qzx.dao.model.AlimamaOrder;
 import com.qzx.dao.model.Settlement;
-import com.qzx.dao.repostiory.AccountRepostiory;
-import com.qzx.dao.repostiory.SettlementRepostiory;
+import com.qzx.dao.repository.AccountRepository;
+import com.qzx.dao.repository.SettlementRepostiory;
 import com.qzx.service.service.AlimamaOrderService;
 import com.qzx.utils.*;
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ import java.util.Date;
 @RestController
 public class AccountController {
     @Autowired
-    private AccountRepostiory accountRepostiory;
+    private AccountRepository accountRepository;
     @Autowired
     private SettlementRepostiory settlementRepostiory;
     @Autowired
@@ -39,7 +39,7 @@ public class AccountController {
     @GetMapping(value = "/token/{prdID}/{tbID}")
     public String findAccessToken(@PathVariable("prdID") String prdID, @PathVariable("tbID") String tbID) throws IOException {
         byte bt = 1;  // 1 表示有效账号
-        Account account = accountRepostiory.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);
+        Account account = accountRepository.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);
         if (account == null || "".equals(account)) {
             logger.info("------------------> 返回对象为空");
             return "返回对象为空" + account;
@@ -88,7 +88,7 @@ public class AccountController {
     @GetMapping(value = "/purchaseold/{prdID}/{tbID}") //lmpurchase
     public String PurchaseOld(@PathVariable("tbID") String tbID, @PathVariable("prdID") String prdID) throws IOException {
         byte bt = 1; //  1: 表示有效账号
-        Account account = accountRepostiory.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);    // 增加产品ID, 趣专享 14000,  柠檬省钱 14200
+        Account account = accountRepository.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);    // 增加产品ID, 趣专享 14000,  柠檬省钱 14200
         if (account == null || "".equals(account)) {
             logger.info("------------------ 返回对象为空");
             return "返回对象为空" + account;
@@ -130,7 +130,7 @@ public class AccountController {
 
         /** 调30301接口上传百川回调数据至用户订单表 **/
         byte bt = 1; //  1: 表示有效账号
-        Account account = accountRepostiory.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);    // 增加产品ID, 趣专享 14000,  柠檬省钱 14200
+        Account account = accountRepository.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);    // 增加产品ID, 趣专享 14000,  柠檬省钱 14200
         if (account == null || "".equals(account)) {
             logger.info("------------------ 返回对象为空");
             return "返回对象为空" + account;
@@ -167,7 +167,7 @@ public class AccountController {
     @ResponseBody
     public Account getUserOrderByUserId(@PathVariable("tbID") String tbID, @PathVariable("prdID") String prdID) {
         byte bt = 1;
-        Account account = accountRepostiory.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);
+        Account account = accountRepository.findByPrdIdAndTbIdAndStatus(prdID, tbID, bt);
         logger.info("------------------------" + JSON.toJSONString(account, true));
         return account;
     }

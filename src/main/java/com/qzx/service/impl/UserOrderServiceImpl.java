@@ -1,7 +1,7 @@
 package com.qzx.service.impl;
 
 import com.qzx.dao.model.UserOrder;
-import com.qzx.dao.repostiory.UserOrderRepostiory;
+import com.qzx.dao.repository.UserOrderRepository;
 import com.qzx.service.service.UserOrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,29 +17,29 @@ public class UserOrderServiceImpl implements UserOrderService {
     private final static Logger logger = LoggerFactory.getLogger(UserOrderServiceImpl.class);
 
     @Autowired
-    private UserOrderRepostiory userOrderRepostiory;
+    private UserOrderRepository userOrderRepository;
 
     @Override
     public UserOrder findUserOrder(Long id) {
-        return userOrderRepostiory.findById(id).get();
+        return userOrderRepository.findById(id).get();
     }
 
     @Override
     public List<UserOrder> findByTbId(String id) {
-        List<UserOrder> userOrders = userOrderRepostiory.findByTbId(id);
+        List<UserOrder> userOrders = userOrderRepository.findByTbId(id);
         return userOrders;
     }
 
     @Override
     public List<UserOrder> findByUserId(Long id) {
-        List<UserOrder> userOrders = userOrderRepostiory.findByUserId(id);
+        List<UserOrder> userOrders = userOrderRepository.findByUserId(id);
         return userOrders;
     }
 
     @Transactional
     @Override
     public void deleteById(Long id) {
-        UserOrder userOrder = userOrderRepostiory.findById(id).get();
+        UserOrder userOrder = userOrderRepository.findById(id).get();
 
         List<UserOrder> userOrders = userOrder.getAccount().getUserOrders();
         for (UserOrder userOrder1 : userOrders) {
@@ -49,16 +49,16 @@ public class UserOrderServiceImpl implements UserOrderService {
             }
         }
 
-        userOrderRepostiory.deleteById(id);
+        userOrderRepository.deleteById(id);
     }
 
     @Transactional
     @Override
     public void deleteByUserId(Long id) {
-        UserOrder userOrder = userOrderRepostiory.findById(id).get();
+        UserOrder userOrder = userOrderRepository.findById(id).get();
         userOrder.clearUserOrder();
         ;
-        userOrderRepostiory.deleteById(id);
+        userOrderRepository.deleteById(id);
     }
 
 
