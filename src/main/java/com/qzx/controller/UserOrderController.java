@@ -21,11 +21,11 @@ public class UserOrderController {
 
     @RequestMapping("/userorder/{UserId}")
     @ResponseBody
-    public List getUserOrderByUserId(@PathVariable("UserId") Long userId ) {
+    public List getUserOrderByUserId(@PathVariable("UserId") Long userId) {
 
         List<UserOrder> userOrder = userOrderService.findByUserId(userId);
         logger.info("------------------------" + userOrder.size());
-        logger.info("------------------------" + JSON.toJSONString(userOrder,true));
+        logger.info("------------------------" + JSON.toJSONString(userOrder, true));
         return userOrder;
     }
 

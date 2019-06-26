@@ -42,9 +42,9 @@ public class UserOrderServiceImpl implements UserOrderService {
         UserOrder userOrder = userOrderRepostiory.findById(id).get();
 
         List<UserOrder> userOrders = userOrder.getAccount().getUserOrders();
-        for(UserOrder userOrder1 : userOrders){
-            if (id.equals(userOrder1.getId())){
-                logger.info("userOrder1.getId() -------------------" + userOrder1.getId() );
+        for (UserOrder userOrder1 : userOrders) {
+            if (id.equals(userOrder1.getId())) {
+                logger.info("userOrder1.getId() -------------------" + userOrder1.getId());
                 userOrders.remove(userOrder1);
             }
         }
@@ -56,7 +56,8 @@ public class UserOrderServiceImpl implements UserOrderService {
     @Override
     public void deleteByUserId(Long id) {
         UserOrder userOrder = userOrderRepostiory.findById(id).get();
-        userOrder.clearUserOrder();;
+        userOrder.clearUserOrder();
+        ;
         userOrderRepostiory.deleteById(id);
     }
 

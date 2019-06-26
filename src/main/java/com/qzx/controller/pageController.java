@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class pageController {
 
     @RequestMapping("/hello/{tbID}")
-    public String helloHtml(HashMap<String, Object> map, @PathVariable("tbID") String tbID ) {
+    public String helloHtml(HashMap<String, Object> map, @PathVariable("tbID") String tbID) {
         map.put("hello", "欢迎进入HTML页面");
         System.out.println("---------------" + tbID);
         return "index"; // "/index" 改成 "index" java -jar xx   才能访问得到

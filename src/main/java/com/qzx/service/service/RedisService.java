@@ -10,6 +10,7 @@ public interface RedisService {
 
     /**
      * set存数据
+     *
      * @param key
      * @param value
      * @return
@@ -18,6 +19,7 @@ public interface RedisService {
 
     /**
      * get获取数据
+     *
      * @param key
      * @return
      */
@@ -25,6 +27,7 @@ public interface RedisService {
 
     /**
      * 设置有效天数
+     *
      * @param key
      * @param expire
      * @return
@@ -33,6 +36,7 @@ public interface RedisService {
 
     /**
      * 移除数据
+     *
      * @param key
      * @return
      */

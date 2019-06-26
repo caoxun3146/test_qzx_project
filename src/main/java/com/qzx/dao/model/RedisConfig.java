@@ -25,7 +25,7 @@ public class RedisConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.redis.pool")
-    public JedisPoolConfig getRedisConfig(){
+    public JedisPoolConfig getRedisConfig() {
         JedisPoolConfig config = new JedisPoolConfig();
         return config;
     }

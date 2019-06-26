@@ -4,32 +4,32 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="qu_mall_settle_order")
+@Table(name = "qu_mall_settle_order")
 public class Settlement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private long id;
 
-    @Column(name="order_id")
+    @Column(name = "order_id")
     private String orderId;
 
-    @Column(name="order_status")
+    @Column(name = "order_status")
     private String order_status;
 
-    @Column(name="settle_status")
+    @Column(name = "settle_status")
     private short settle_status;
 
-    @Column(name="create_time")
+    @Column(name = "create_time")
     private Date create_time;
 
-    @Column(name="clearing_time")
+    @Column(name = "clearing_time")
     private Date clearing_time;
 
-    @Column(name="ctime")
+    @Column(name = "ctime")
     private Date ctime;
 
-    @Column(name="utime")
+    @Column(name = "utime")
     private Date utime;
 
     public long getId() {
@@ -97,7 +97,7 @@ public class Settlement {
     }
 
 
-    public Settlement(){
+    public Settlement() {
         // 如果已经创建了其它构造函数, 那么必须创建默认构造函数
     }
 

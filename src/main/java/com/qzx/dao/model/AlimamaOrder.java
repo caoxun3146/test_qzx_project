@@ -110,7 +110,8 @@ public class AlimamaOrder {
     @Column(name = "status")  // 0
     private int status;
 
-    public AlimamaOrder(){}
+    public AlimamaOrder() {
+    }
 
     public AlimamaOrder(Date createTime, Date clickTime, String productInfo, Long productId, String shopkeeperAliwangwang, String store, int productNumber, String productUnitPrice, String orderStatus, String orderType, String incomeRatio, String separateRatio, String paymentMoney, String resultEstimate, String clearingMoney, String estimateIncome, String commissionRatio, String commissionMoney, String subsidyRatio, String subsidyMoney, String subsidyType, String resultPlatform, String thirdPartySource, String orderId, String className, String sourceMediaId, String sourceMediaName, String advertisingId, String advertisingName, String rightOrderId, Date compareTime, Date utime, int status) {
         this.createTime = createTime;

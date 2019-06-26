@@ -8,38 +8,38 @@ import java.util.List;
 
 
 @Entity
-@Table(name="qu_account")
+@Table(name = "qu_account")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name="tb_id") //淘宝ID
+    @Column(name = "tb_id") //淘宝ID
     private String tbId;
 
-    @Column(name="phone_id")
+    @Column(name = "phone_id")
     private String phoneId;
 
-    @Column(name="prdid")
+    @Column(name = "prdid")
     private String prdId;
 
-    @Column(name="status") // byte ==  tinyint(2)
+    @Column(name = "status") // byte ==  tinyint(2)
     private byte status;
 
-    public Account(){
+    public Account() {
 
     }
 
 
-    @OneToMany(mappedBy = "account",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE},fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     /*@OneToMany(targetEntity = Account.class,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE},fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")//注释的是另一个表指向本表的外键。*/
     //简化被动方,手动维护外键ID
     @JsonIgnore // 在json序列化时将java bean中的一些属性忽略掉，序列化和反序列化都受影响。
     private List<UserOrder> userOrders = new ArrayList<>();
 
-    public void addAccount(UserOrder userOrder){
+    public void addAccount(UserOrder userOrder) {
         userOrder.setAccount(this);
         userOrders.add(userOrder);
     }
@@ -95,8 +95,6 @@ public class Account {
     public void setUserOrders(List<UserOrder> userOrders) {
         this.userOrders = userOrders;
     }
-
-
 
 
 }

@@ -28,29 +28,30 @@ public class UserOrderTests {
     private final static Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @Test
-    public void FindUserOrder(){
+    public void FindUserOrder() {
         UserOrder userOrder = userOrderService.findUserOrder(2286895L);
-        logger.info("----------------------------------- " + JSON.toJSONString(userOrder,true));
+        logger.info("----------------------------------- " + JSON.toJSONString(userOrder, true));
     }
 
     @Test
-    public void FindAccountAndUserOrder(){
+    public void FindAccountAndUserOrder() {
         Account account = accountService.findById(662454L);
-        logger.info("----------------------------------- " + JSON.toJSONString(account,true));
-    }
-    @Test
-    public void FindByUserId(){
-        List<UserOrder> userOrders = userOrderService.findByUserId(662454L);
-        logger.info("--------------------" + JSON.toJSONString(userOrders,true) );
+        logger.info("----------------------------------- " + JSON.toJSONString(account, true));
     }
 
     @Test
-    public void DeleteById(){
+    public void FindByUserId() {
+        List<UserOrder> userOrders = userOrderService.findByUserId(662454L);
+        logger.info("--------------------" + JSON.toJSONString(userOrders, true));
+    }
+
+    @Test
+    public void DeleteById() {
         userOrderService.deleteById(2286911L);
     }
 
     @Test
-    public void DeleteByUserId(){
+    public void DeleteByUserId() {
         userOrderService.deleteByUserId(2286958L);
     }
 

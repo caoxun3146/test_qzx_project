@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="qu_user_redpacket")
+@Table(name = "qu_user_redpacket")
 public class QuUserRedpack {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)

@@ -33,13 +33,14 @@ public class RedisTests {
     private final static Logger logger = LoggerFactory.getLogger(RedisTests.class);
 
     private JSONObject json = new JSONObject();
+
     /**
      * 插入字符串
      */
     @Test
     public void setString() {
         redisService.set("redis_string_test", "springboot redis test");
-        logger.info("----------------------------" + redisService.expire("redis_string_test",20));
+        logger.info("----------------------------" + redisService.expire("redis_string_test", 20));
     }
 
     /**
@@ -108,7 +109,7 @@ public class RedisTests {
         logger.info("---------------->>3 " + redisTemplate.opsForSet().members("test-set"));
         Set<String> setCache = (Set<String>) redisTemplate.opsForSet().members("test-set");
         logger.info("---------------->>4 " + setCache.size());
-        for(String str : setCache){
+        for (String str : setCache) {
             logger.info("---------------->>5 " + str);
         }
 
@@ -122,13 +123,13 @@ public class RedisTests {
     }
 
     @Test
-    public void expire(){
-        logger.info("---------------------------->> " + redisService.expire("redis_string_test",120));
+    public void expire() {
+        logger.info("---------------------------->> " + redisService.expire("redis_string_test", 120));
     }
 
     @Test
-    public void util(){
-        logger.info("----------------------------" +  redisUtil.get("redis_obj_test"));
+    public void util() {
+        logger.info("----------------------------" + redisUtil.get("redis_obj_test"));
     }
 
 }

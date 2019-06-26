@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="qu_activity_new_user_redpack")
+@Table(name = "qu_activity_new_user_redpack")
 public class UserRedpack {
 
     @Id
@@ -19,7 +19,7 @@ public class UserRedpack {
     @Column(name = "userid")   // tips:驼峰命名后,字段自动变成 user_id
     private int userId;
 
-    @Column(name = "phoneid",columnDefinition ="varchar(100)")
+    @Column(name = "phoneid", columnDefinition = "varchar(100)")
     private String phoneId;
 
     public long getId() {

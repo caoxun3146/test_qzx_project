@@ -4,10 +4,9 @@ import java.util.Random;
 
 public class RandomNumbers {
 
-    public static String getOrder(){
+    public static String getOrder() {
         String orderId = null;
-        for (int mantissa = 1; mantissa <= 50; mantissa++)
-        {
+        for (int mantissa = 1; mantissa <= 50; mantissa++) {
             StringBuilder str = new StringBuilder();//定义变长字符串
             Random random = new Random();
             //随机生成数字，并添加到字符串

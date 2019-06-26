@@ -24,7 +24,7 @@ public class AccountTests {
     private AccountService accountService;
 
     @Test
-    public void findAccountTest(){
+    public void findAccountTest() {
       /*  Account account = authorRepostiory.findByTbId("1953957034");
         System.out.println("===================>>"+ JSON.toJSONString(account,true));
         System.out.println("===================>"+account.getId());

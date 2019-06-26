@@ -16,10 +16,10 @@ public class UserRedpackController {
     private UserRedpackRepostiory userRedpackRepostiory;
 
     @GetMapping(value = "/redpack/{phoneId}")
-    public String findAccessToken(@PathVariable("phoneId") String phoneId)  {
+    public String findAccessToken(@PathVariable("phoneId") String phoneId) {
 
         UserRedpack userRedpack = userRedpackRepostiory.findByPhoneId(phoneId);
-        if(userRedpack == null || "".equals(userRedpack)){
+        if (userRedpack == null || "".equals(userRedpack)) {
             return "数据不存在";
         }
         userRedpackRepostiory.deleteByPhoneId(phoneId);

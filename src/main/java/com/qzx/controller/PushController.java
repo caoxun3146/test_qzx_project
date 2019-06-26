@@ -14,6 +14,7 @@ import java.io.IOException;
 public class PushController {
     /**
      * 根据设备ID  推送  ,默认性别:女(1)  男(0)
+     *
      * @param jsession
      * @param phoneId
      * @return
@@ -22,15 +23,15 @@ public class PushController {
     private final static Logger logger = LoggerFactory.getLogger(PushController.class);
 
     @GetMapping(value = "/push/{jsession}/{phoneId}")
-    public String Push(@PathVariable("jsession") String jsession,@PathVariable("phoneId") String phoneId) throws IOException {
+    public String Push(@PathVariable("jsession") String jsession, @PathVariable("phoneId") String phoneId) throws IOException {
 
-        String result = SendPush.send(jsession,phoneId,"1");  // 设置性别为女
-        JSONObject pa=JSONObject.parseObject(result);
-        logger.info("------------------> "+pa.getString("msg"));
-        if (pa.getString("msg").equals("未找到推送的设备ID列表")){
-             result = SendPush.send(jsession,phoneId,"0");   // 设置性别为男
+        String result = SendPush.send(jsession, phoneId, "1");  // 设置性别为女
+        JSONObject pa = JSONObject.parseObject(result);
+        logger.info("------------------> " + pa.getString("msg"));
+        if (pa.getString("msg").equals("未找到推送的设备ID列表")) {
+            result = SendPush.send(jsession, phoneId, "0");   // 设置性别为男
         }
-        return  result;
+        return result;
     }
 
 }

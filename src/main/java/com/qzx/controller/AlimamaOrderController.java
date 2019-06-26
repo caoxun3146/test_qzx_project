@@ -22,9 +22,9 @@ public class AlimamaOrderController {
 
     @RequestMapping("/alimama/{orderId}")
     @ResponseBody
-    public Result getUserOrderByUserId(@PathVariable("orderId") String orderId ) {
+    public Result getUserOrderByUserId(@PathVariable("orderId") String orderId) {
         AlimamaOrder alimamaOrder = alimamaOrderService.findByOrderId(orderId);
-        logger.info("------------------>" + JSON.toJSONString(alimamaOrder,true));
+        logger.info("------------------>" + JSON.toJSONString(alimamaOrder, true));
         return ResultUtil.success(alimamaOrder);
     }
 }
