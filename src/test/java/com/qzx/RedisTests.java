@@ -3,6 +3,7 @@ package com.qzx;
 import com.alibaba.fastjson.JSONObject;
 import com.qzx.dao.model.Person;
 import com.qzx.service.service.RedisService;
+import com.qzx.utils.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,6 +26,10 @@ public class RedisTests {
 
     @Autowired
     private RedisTemplate<String, ?> redisTemplate;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
     private final static Logger logger = LoggerFactory.getLogger(RedisTests.class);
 
     private JSONObject json = new JSONObject();
@@ -121,5 +126,9 @@ public class RedisTests {
         logger.info("---------------------------->> " + redisService.expire("redis_string_test",120));
     }
 
+    @Test
+    public void util(){
+        logger.info("----------------------------" +  redisUtil.get("redis_obj_test"));
+    }
 
 }

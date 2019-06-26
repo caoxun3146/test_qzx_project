@@ -157,9 +157,9 @@ public class AccountController {
 
     @RequestMapping("/getuserinfo/{prdID}/{tbID}")
     @ResponseBody
-    public Account getUserOrderByUserId(@PathVariable("prdID") String prdID ,@PathVariable("tbId") String tbId ) {
+    public Account getUserOrderByUserId(@PathVariable("tbID") String tbID,@PathVariable("prdID") String prdID) {
         byte bt = 1 ;
-        Account account = accountRepostiory.findByPrdIdAndTbIdAndStatus(prdID,tbId,bt);
+        Account account = accountRepostiory.findByPrdIdAndTbIdAndStatus(prdID,tbID,bt);
         logger.info("------------------------" + JSON.toJSONString(account,true));
         return account;
     }
