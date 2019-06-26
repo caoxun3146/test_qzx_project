@@ -13,9 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
@@ -134,7 +132,30 @@ public class RedisTests {
     public void redisUtil() {
         //logger.info("----------------------------" + redisUtil.get("redis_obj_test"));
 
-        redisUtil.sSet("setkey", "service", "component", "repository");
+        //  设置set
+        redisUtil.sSet("setfirstkey", "service", "component", "repository");
+        redisUtil.sSet("setsecondkey", "FCB52388645E554D32F68BBDE00AD86249D6056C4BC372D0D7BF592D93FAA32EA9A423A0F2E901AE96A3C81DE1ED65E1FCEFEA50E4CB287B6C7D86BCF2F558DC: 1558678509429", "FCB52388645E554D32F68BBDE00AD86249D6056C4BC372D0D7BF592D93FAA32E39B0034002F82357D3C79F682E43595BB6CBE8E2B12B1701EE871D981A183E50: 1558767951516", "FCB52388645E554D32F68BBDE00AD86249D6056C4BC372D0D7BF592D93FAA32E70D6F89E5AA645577D3BF956F030F325B019E5D3BB838D743FD3DBCCC9030168: 1559292030587");
+        //  获取set
+        logger.info("-----------------------------"  + redisUtil.sGet("setfirstkey"));
+        logger.info("-----------------------------"  + redisUtil.sGet("setsecondkey"));
+        Set<Object> setCache = redisUtil.sGet("setsecondkey");
+
+        Map<String, String> map = new HashMap<String, String>();  // 创建map来存储token集
+
+        String[] strArr;
+        long max = 0; // 匹配出最新的token值
+        for (Object setStr : setCache) {
+            strArr = setStr.toString().split(": ");
+            map.put(strArr[1], strArr[0]); // 将token存储到map中
+            if (Long.parseLong(strArr[1]) > max) {
+                max = Long.parseLong(strArr[1]);
+            }
+        }
+        logger.info("---------------------" + map.get(max + ""));  // map参数, 必须传字符串类型
+
+        //  删除set,  1个或多个 key
+        //redisUtil.del("setfirstkey","setsecondkey");
+
     }
 
 }

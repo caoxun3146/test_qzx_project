@@ -2,7 +2,7 @@ package com.qzx;
 
 import com.qzx.dao.repository.AccountRepository;
 import com.qzx.service.service.AccountService;
-import com.qzx.dao.repository.SettlementRepostiory;
+import com.qzx.dao.repository.SettlementRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ public class AccountTests {
     @Autowired
     private AccountRepository authorRepostiory;
     @Autowired
-    private SettlementRepostiory settlementRepostiory;
+    private SettlementRepository settlementRepostiory;
     private final static Logger logger = LoggerFactory.getLogger(AccountTests.class);
 
     @Autowired

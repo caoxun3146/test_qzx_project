@@ -5,7 +5,7 @@ import com.qzx.dao.model.Account;
 import com.qzx.dao.model.AlimamaOrder;
 import com.qzx.dao.model.Settlement;
 import com.qzx.dao.repository.AccountRepository;
-import com.qzx.dao.repository.SettlementRepostiory;
+import com.qzx.dao.repository.SettlementRepository;
 import com.qzx.service.service.AlimamaOrderService;
 import com.qzx.utils.*;
 import org.slf4j.Logger;
@@ -23,7 +23,7 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private SettlementRepostiory settlementRepostiory;
+    private SettlementRepository settlementRepository;
     @Autowired
     private AlimamaOrderService alimamaOrderService;
 
@@ -58,14 +58,14 @@ public class AccountController {
      */
     @GetMapping(value = "/settlement/{prdID}/{tbID}/{orderId}")
     public String Settlement(@PathVariable("prdID") String prdID, @PathVariable("tbID") String tbID, @PathVariable("orderId") String orderId) throws IOException, ParseException {
-        Settlement settlement = settlementRepostiory.findByOrderId(orderId);
+        Settlement settlement = settlementRepository.findByOrderId(orderId);
         if (settlement == null || "".equals(settlement)) {
             // 新增一条淘宝购物记录
             short settleStatus = 1;// 订单成功 - 1, 订单失效 - 3 ,   setOrder_status  : 订单成功/订单失效
             SimpleDateFormat simFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
             Date dtBeg = simFormat.parse("2029.12.23 22:45:56");
             settlement = new Settlement(orderId, "订单成功", settleStatus, new Date(), new Date(), new Date(), dtBeg);
-            Settlement saveResp = settlementRepostiory.save(settlement);
+            Settlement saveResp = settlementRepository.save(settlement);
 
             // 调订单结算任务
             String URL = "http://test.vipgift.gmilesquan.com/quSuperManager/mall/fanliOrder/settleOrder.do?createTimeSpan=1&settleTimeSpan=1&findNoClientUserOrder=0";
