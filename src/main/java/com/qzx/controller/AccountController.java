@@ -1,5 +1,6 @@
 package com.qzx.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.qzx.dao.model.Account;
 import com.qzx.dao.model.AlimamaOrder;
 import com.qzx.dao.model.Settlement;
@@ -10,9 +11,8 @@ import com.qzx.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -149,6 +149,19 @@ public class AccountController {
     @GetMapping(value = "/order")
     public String GetOrder()  {
          return RandomNumbers.getOrder();
+    }
+
+    /**
+     * 获取用户信息
+     */
+
+    @RequestMapping("/getuserinfo/{prdID}/{tbID}")
+    @ResponseBody
+    public Account getUserOrderByUserId(@PathVariable("prdID") String prdID ,@PathVariable("tbId") String tbId ) {
+        byte bt = 1 ;
+        Account account = accountRepostiory.findByPrdIdAndTbIdAndStatus(prdID,tbId,bt);
+        logger.info("------------------------" + JSON.toJSONString(account,true));
+        return account;
     }
 }
 
