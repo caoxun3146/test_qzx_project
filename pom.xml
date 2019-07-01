@@ -118,6 +118,12 @@
 			<artifactId>dom4j</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+		<!-- @Getter @Setter 使用注解	lombok.Getter; -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.8</version>
+		</dependency>
 
 	</dependencies>
 
